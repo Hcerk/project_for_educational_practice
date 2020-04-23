@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Project_for_educational_practice.Scripts;
 
 namespace Project_for_educational_practice
 {
@@ -20,10 +23,6 @@ namespace Project_for_educational_practice
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static int index = 0;
-        private static string[] files = { "/GIF/1.mp4", "/GIF/2.mp4", "/GIF/3.mp4" };
-        MediaPlayer player = new MediaPlayer();
-
         public MainWindow()
         {
             InitializeComponent();
@@ -31,33 +30,25 @@ namespace Project_for_educational_practice
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // MP3
-            player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "/MP3/Dog-El Dembow del Perro-kissvk.com.mp3", UriKind.Absolute));
-            player.Volume = 1;
-            player.Play();
-            // GIF
-            mElement.Source = new Uri(AppDomain.CurrentDomain.BaseDirectory + files[index], UriKind.Absolute);
-            mElement.UnloadedBehavior = MediaState.Manual;
-            mElement.MediaEnded += (send, err) =>
+            try
             {
-                index = files.Length - 1 > index++ ? index++ : 0;
-                mElement.Source = new Uri(AppDomain.CurrentDomain.BaseDirectory + files[index], UriKind.Absolute);
-                mElement.Position = new TimeSpan(0, 0, 0);
-                mElement.Play();
-            };
-            mElement.MediaOpened += (send, err) => { optimazed(); };
+                int a = 100;
+                int b = 0;
+                Console.WriteLine(a / b);
+            }
+            catch (DivideByZeroException er)
+            {
+                new Logger().WriteInLog(LogType.Error, $"Ошибка - {er.Message}");
+            }
         }
 
-        private void optimazed(int H = 35)
+        private void Window_Closing(object sender, CancelEventArgs e)
         {
-            this.Width = mElement.Width;
-            this.MaxWidth = mElement.Width;
-            this.MinWidth = mElement.Width;
-            this.Height = mElement.Height + H;
-            this.MaxHeight = mElement.Height + H;
-            this.MinHeight = mElement.Height + H;
-            this.Left = (SystemParameters.WorkArea.Width - this.Width) / 2;
-            this.Top = (SystemParameters.WorkArea.Height - this.Height) / 2;
+            new Logger().WriteInLog(LogType.Warning, "Предупреждение о выходе из программы");
+            if (MessageBox.Show("Вы действительно хотите выйти из приложения?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
+                Application.Current.Shutdown();
+            else
+                e.Cancel = true;
         }
     }
 }

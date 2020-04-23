@@ -5,9 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_for_educational_practice"
         mc:Ignorable="d"
-        Title="Вы в танцах" Height="450" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="Главное меню" Height="450" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid Background="Gray">
-        <MediaElement x:Name="mElement" HorizontalAlignment="Center" Height="209" Margin="0" VerticalAlignment="Center" Width="280"/>
 
     </Grid>
 </Window>
