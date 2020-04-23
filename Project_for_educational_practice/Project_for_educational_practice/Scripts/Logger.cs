@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Project_for_educational_practice.Scripts
 {
@@ -16,12 +13,7 @@ namespace Project_for_educational_practice.Scripts
         void WriteInLog(LogType logType, string message);
     }
 
-    public enum LogType
-    {
-        Info,
-        Warning,
-        Error
-    }
+    public enum LogType { Info, Warning, Error }
 
     public class Logger : ILogger
     {
@@ -49,7 +41,6 @@ namespace Project_for_educational_practice.Scripts
         {
             WriteInLog(LogType.Error, message);
             TException exc = new TException();
-            //нужно добавить в exc текст сообщения
             return exc;
         }
     }
