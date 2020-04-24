@@ -1,0 +1,64 @@
+﻿<Window x:Class="Project_for_educational_practice.Forms.InfoPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_for_educational_practice.Forms"
+        mc:Ignorable="d"
+        Height="200" Width="300"
+        AllowsTransparency="True" Background="Transparent" 
+        WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Window.Resources>
+        <ControlTemplate TargetType="Button" x:Key="Close">
+            <Border Width="20" Height="20"
+                    CornerRadius="3" Background="Transparent"
+                    HorizontalAlignment="Right">
+                <ContentControl HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                FontSize="14" Content="X"
+                                Foreground="Red"/>
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <Border BorderThickness="2" CornerRadius="10, 10, 10, 10"
+                Width="300" Height="200">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientBrush.GradientStops>
+                        <GradientStopCollection>
+                            <GradientStop Color="#e7ebf7" Offset="0.0"/>
+                            <GradientStop Color="#cee3ff" Offset="0.5"/>
+                        </GradientStopCollection>
+                    </GradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Информация" TextAlignment="Center" 
+                           HorizontalAlignment="Center" Margin="1"
+                           Height="20"/>
+                <Button Click="CloseBtt" Template="{StaticResource Close}"/>
+                <Grid Grid.Row="1" Height="200" Width="300"
+                      Background="#f2f2f2" RenderTransformOrigin="0.5,0.5"
+                      VerticalAlignment="Top" HorizontalAlignment="Center"
+                      Margin="0, 0, 0, 8">
+                    <TextBlock Text="Разработчик № 1 - Соцкий И. С." FontSize="14"
+                               HorizontalAlignment="Center"
+                               Margin="12, 20, 0, 0"/>
+                    <TextBlock Text="Разработчик № 2 - Кулёв И. Р." FontSize="14"
+                               HorizontalAlignment="Center"
+                               Margin="12, 40, 0, 0"/>
+                    <TextBlock x:Name="VersionApp" Text="Версия программы - 0.0.1b" FontSize="14"
+                               HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                               Margin="12, 60, 0, 60"/>
+                    <TextBlock FontSize="12"
+                               VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                               Margin="10, 0, 0, 40">© 2020, 9ИСП-391К. <Hyperlink Click="hClick">Ссылка на github</Hyperlink></TextBlock>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

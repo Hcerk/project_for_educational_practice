@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Threading;
-using Project_for_educational_practice.Scripts;
+
+using LoggerDLL;
 
 namespace Project_for_educational_practice
 {

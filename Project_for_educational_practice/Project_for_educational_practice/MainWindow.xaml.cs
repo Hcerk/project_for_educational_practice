@@ -1,7 +1,7 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows;
-using Project_for_educational_practice.Scripts;
+﻿using System.Windows;
+using Microsoft.Win32;
+
+using LoggerDLL;
 
 namespace Project_for_educational_practice
 {
@@ -15,27 +15,22 @@ namespace Project_for_educational_practice
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        public void Exit(object sender, RoutedEventArgs e) { Application.Current.Shutdown(); }
+        
+        public void OpenBtt(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                int a = 100;
-                int b = 0;
-                Console.WriteLine(a / b);
-            }
-            catch (DivideByZeroException er)
-            {
-                new Logger().WriteInLog(LogType.Error, $"Ошибка - {er.Message}");
-            }
+            bool? myDres = new OpenFileDialog().ShowDialog();
+            if (myDres == true | myDres == false)
+                new Logger().WriteInLog(LogType.Error, "Невозможно открыть файл");
         }
 
-        private void Window_Closing(object sender, CancelEventArgs e)
-        {
-            new Logger().WriteInLog(LogType.Warning, "Предупреждение о выходе из программы");
-            if (MessageBox.Show("Вы действительно хотите выйти из приложения?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
-                Application.Current.Shutdown();
-            else
-                e.Cancel = true;
-        }
+        public void ExitBtt(object sender, RoutedEventArgs e) { Application.Current.Shutdown(); }
+
+        public void OpenSettings(object sender, RoutedEventArgs e) { new Forms.Settings().ShowDialog(); }
+        
+        public void ClearPamel(object sender, RoutedEventArgs e) { Panel.Children.Clear(); }
+
+        public void Info(object sender, RoutedEventArgs e) { new Forms.InfoPanel().ShowDialog(); }
+
     }
 }

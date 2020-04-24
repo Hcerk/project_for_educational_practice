@@ -2,9 +2,8 @@
 using System.IO;
 using System.Text;
 
-namespace Project_for_educational_practice.Scripts
+namespace LoggerDLL
 {
-
     public interface ILogger
     {
         TException NewException<TException>(string message)

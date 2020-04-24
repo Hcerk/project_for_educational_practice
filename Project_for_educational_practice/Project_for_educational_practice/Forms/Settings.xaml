@@ -1,12 +1,12 @@
-﻿<Window x:Class="Project_for_educational_practice.MainWindow"
+﻿<Window x:Class="Project_for_educational_practice.Forms.Settings"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Project_for_educational_practice"
+        xmlns:local="clr-namespace:Project_for_educational_practice.Forms"
         mc:Ignorable="d"
-        Title="Главное меню" WindowStartupLocation="CenterScreen" 
-        Height="600" Width="800"
+        Title="Settings" WindowStartupLocation="CenterScreen"
+        Height="300" Width="250"
         AllowsTransparency="True" Background="Transparent"  WindowStyle="None">
     <Window.Resources>
         <ControlTemplate TargetType="Button" x:Key="Close">
@@ -20,7 +20,7 @@
         </ControlTemplate>
     </Window.Resources>
     <Grid>
-        <Border Grid.Row="0" Height="600" Width="800" CornerRadius="10, 10, 10, 10">
+        <Border Grid.Row="0" Height="300" Width="250" CornerRadius="10, 10, 10, 10">
             <Border.Background>
                 <LinearGradientBrush>
                     <GradientBrush.GradientStops>
@@ -37,36 +37,22 @@
                     <RowDefinition/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="Главное меню" FontSize="14"
+                <TextBlock Grid.Row="0" Text="Настройки" FontSize="14"
                            HorizontalAlignment="Center"/>
                 <Button Grid.Row="0" Click="Exit" Template="{StaticResource Close}"/>
-                <Grid Grid.Row="1" Background="White">
+                <Grid Grid.Row="1" Background="#f2f2f2">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
                         <RowDefinition/>
-                        <RowDefinition Height="80"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Menu Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                              Width="800">
-                        <MenuItem Header="Файл">
-                            <MenuItem Header="Открыть" Click="OpenBtt"/>
-                            <MenuItem Header="Выход"   Click="ExitBtt"/>
-                        </MenuItem>
-                        <MenuItem Header="Модули">
-                            <MenuItem Header="Настройки" Click="OpenSettings"/>
-                        </MenuItem>
-                        <MenuItem Header="О программе" Click="Info"/>
-                    </Menu>
-                    <StackPanel x:Name="Panel" Grid.Row="1">
-                        <TextBlock Text="asd" Margin="10"/>
-                    </StackPanel>
-                    <Grid Grid.Row="2" Background="#fff8d4">
-                        <Button Content="Очистить"
-                                HorizontalAlignment="Right" VerticalAlignment="Top"
-                                Height="20" Width="100"
-                                Margin="0, 10, 65, 0"
-                                Click="ClearPamel"/>
-                    </Grid>
+                    <RadioButton Grid.Row="0" Content="Тут"
+                                 HorizontalAlignment="Center"/>
+                    <CheckBox Grid.Row="1" Content="когда-нибудь"
+                              HorizontalAlignment="Center"/>
+                    <TextBox Grid.Row="2" Text="будут адекватные настройки"
+                             Height="20"
+                             HorizontalAlignment="Center"/>
                 </Grid>
                 <TextBlock Grid.Row="2" Text="" FontSize="14"/>
             </Grid>
