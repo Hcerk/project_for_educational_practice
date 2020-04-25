@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 
 using LoggerDLL;
+using System.Windows.Input;
 
 namespace Project_for_educational_practice
 {
@@ -14,6 +15,8 @@ namespace Project_for_educational_practice
         {
             InitializeComponent();
         }
+
+        private void MoveWindow(object sender, MouseButtonEventArgs e) { this.DragMove(); }
 
         public void Exit(object sender, RoutedEventArgs e) { Application.Current.Shutdown(); }
         
