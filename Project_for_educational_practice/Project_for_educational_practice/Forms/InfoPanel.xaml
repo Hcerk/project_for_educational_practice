@@ -11,11 +11,11 @@
         ResizeMode="NoResize">
     <Window.Resources>
         <ControlTemplate TargetType="Button" x:Key="Close">
-            <Border Width="20" Height="20"
-                    CornerRadius="3" Background="Transparent"
+            <Border Width="20" Height="22"
+                    CornerRadius="0, 8.9, 0, 0" Background="{TemplateBinding Background}"
                     HorizontalAlignment="Right">
-                <ContentControl HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                FontSize="14" Content="X"
+                <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center"
+                                FontSize="14" Content="✕"
                                 Foreground="Red"/>
             </Border>
         </ControlTemplate>
@@ -44,24 +44,29 @@
                            Height="20"/>
                 <Border Grid.Row="0" CornerRadius="8, 8, 0, 0" 
                         Background="Transparent" MouseLeftButtonDown="MoveWindow"/>
-                <Button Grid.Row="0" Click="CloseBtt" Template="{StaticResource Close}"/>
-                <Grid Grid.Row="1" Height="200" Width="300"
-                      Background="#f2f2f2" RenderTransformOrigin="0.5,0.5"
-                      VerticalAlignment="Top" HorizontalAlignment="Center"
-                      Margin="0, 0, 0, 8">
-                    <TextBlock Text="Разработчик № 1 - Соцкий И. С." FontSize="14"
+                <Button x:Name="Close" Grid.Row="0" Click="CloseBtt" Template="{StaticResource Close}"
+                        MouseEnter="BMouseEnter" MouseLeave="BMouseLeave"
+                        Background="Transparent"/>
+                <Border Grid.Row="1"
+                        CornerRadius="0, 0, 9, 9" Background="#f2f2f2"
+                        Height="174" Width="296">
+                    <Grid Height="200" Width="300"
+                      VerticalAlignment="Top" HorizontalAlignment="Center">
+                        <!-- Margin="0, 0, 0, 8" -->
+                        <TextBlock Text="Разработчик № 1 - Соцкий И. С." FontSize="14"
                                HorizontalAlignment="Center"
                                Margin="12, 20, 0, 0"/>
-                    <TextBlock Text="Разработчик № 2 - Кулёв И. Р." FontSize="14"
+                        <TextBlock Text="Разработчик № 2 - Кулёв И. Р." FontSize="14"
                                HorizontalAlignment="Center"
                                Margin="12, 40, 0, 0"/>
-                    <TextBlock x:Name="VersionApp" Text="Версия программы - 0.0.1b" FontSize="14"
+                        <TextBlock x:Name="VersionApp" Text="Версия программы - 0.0.1b" FontSize="14"
                                HorizontalAlignment="Center" VerticalAlignment="Bottom"
                                Margin="12, 60, 0, 60"/>
-                    <TextBlock FontSize="12"
+                        <TextBlock FontSize="12"
                                VerticalAlignment="Bottom" HorizontalAlignment="Center"
                                Margin="10, 0, 0, 40">© 2020, 9ИСП-391К. <Hyperlink Click="hClick">Ссылка на github</Hyperlink></TextBlock>
-                </Grid>
+                    </Grid>
+                </Border>
             </Grid>
         </Border>
     </Grid>

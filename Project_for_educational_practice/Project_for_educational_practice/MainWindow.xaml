@@ -11,17 +11,17 @@
         ResizeMode="NoResize">
     <Window.Resources>
         <ControlTemplate TargetType="Button" x:Key="Close">
-            <Border Width="20" Height="20"
-                    CornerRadius="3" Background="Transparent"
+            <Border Width="20" Height="22"
+                    CornerRadius="0, 8.9, 0, 0" Background="{TemplateBinding Background}"
                     HorizontalAlignment="Right">
-                <ContentControl HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                FontSize="14" Content="X"
+                <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center"
+                                FontSize="14" Content="✕"
                                 Foreground="Red"/>
             </Border>
         </ControlTemplate>
     </Window.Resources>
     <Grid>
-        <Border Grid.Row="0" Height="600" Width="800" CornerRadius="10, 10, 10, 10">
+        <Border Grid.Row="0" Height="600" Width="800" CornerRadius="10">
             <Border.Background>
                 <LinearGradientBrush>
                     <GradientBrush.GradientStops>
@@ -43,20 +43,23 @@
                            HorizontalAlignment="Center"/>
                 <Border Grid.Row="0" CornerRadius="8, 8, 0, 0"
                         Background="Transparent" MouseLeftButtonDown="MoveWindow"/>
-                <Button Grid.Row="0" Click="Exit" Template="{StaticResource Close}"/>
+                <Button x:Name="Close" Grid.Row="0" Click="Exit" Template="{StaticResource Close}"
+                        Background="Transparent"
+                        MouseEnter="BMouseEnter" MouseLeave="BMouseLeave"/>
                 <Grid Grid.Row="1" Background="White">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                         <RowDefinition Height="80"/>
                     </Grid.RowDefinitions>
-                    <Menu Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                              Width="800">
-                        <MenuItem Header="Файл">
+                    <Menu x:Name="MainMenu" Grid.Row="0" 
+                          HorizontalAlignment="Left" VerticalAlignment="Top" 
+                          Width="800">
+                        <MenuItem x:Name="MenuFile" Header="Файл">
                             <MenuItem Header="Открыть" Click="OpenBtt"/>
                             <MenuItem Header="Выход"   Click="ExitBtt"/>
                         </MenuItem>
-                        <MenuItem Header="Модули">
+                        <MenuItem x:Name="MenuModels" Header="Модули">
                             <MenuItem Header="Настройки" Click="OpenSettings"/>
                         </MenuItem>
                         <MenuItem Header="О программе" Click="Info"/>
@@ -75,5 +78,6 @@
                 <TextBlock Grid.Row="2" Text="" FontSize="14"/>
             </Grid>
         </Border>
+        <Border x:Name="Mask" Background="Gray" CornerRadius="10" Opacity="0.7" Visibility="Hidden"/>
     </Grid>
 </Window>

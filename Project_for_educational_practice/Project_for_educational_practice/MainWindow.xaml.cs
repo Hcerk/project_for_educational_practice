@@ -1,8 +1,9 @@
 ﻿using System.Windows;
 using Microsoft.Win32;
+using System.Windows.Input;
+using System.Windows.Media;
 
 using LoggerDLL;
-using System.Windows.Input;
 
 namespace Project_for_educational_practice
 {
@@ -11,15 +12,17 @@ namespace Project_for_educational_practice
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
 
-        private void MoveWindow(object sender, MouseButtonEventArgs e) { this.DragMove(); }
+        public MainWindow() => InitializeComponent();
 
-        public void Exit(object sender, RoutedEventArgs e) { Application.Current.Shutdown(); }
-        
+        private void MoveWindow(object sender, MouseButtonEventArgs e) => this.DragMove(); 
+
+        public void Exit(object sender, RoutedEventArgs e) => Application.Current.Shutdown();
+
+        private void BMouseEnter(object sender, MouseEventArgs e) => Close.Background = new SolidColorBrush(Color.FromRgb(255, 201, 94));
+
+        private void BMouseLeave(object sender, MouseEventArgs e) => Close.Background = new SolidColorBrush(Colors.Transparent);
+
         public void OpenBtt(object sender, RoutedEventArgs e)
         {
             bool? myDres = new OpenFileDialog().ShowDialog();
@@ -27,13 +30,13 @@ namespace Project_for_educational_practice
                 new Logger().WriteInLog(LogType.Error, "Невозможно открыть файл");
         }
 
-        public void ExitBtt(object sender, RoutedEventArgs e) { Application.Current.Shutdown(); }
+        public void ExitBtt(object sender, RoutedEventArgs e) => Application.Current.Shutdown(); 
 
-        public void OpenSettings(object sender, RoutedEventArgs e) { new Forms.Settings().ShowDialog(); }
+        public void OpenSettings(object sender, RoutedEventArgs e) => new Forms.Settings().ShowDialog(); 
         
-        public void ClearPamel(object sender, RoutedEventArgs e) { Panel.Children.Clear(); }
+        public void ClearPamel(object sender, RoutedEventArgs e) => Panel.Children.Clear(); 
 
-        public void Info(object sender, RoutedEventArgs e) { new Forms.InfoPanel().ShowDialog(); }
+        public void Info(object sender, RoutedEventArgs e) => new Forms.InfoPanel().Show();
 
     }
 }
