@@ -1,0 +1,56 @@
+﻿<Window x:Class="Project_for_educational_practice.Forms.ConnectionDataBase"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_for_educational_practice.Forms"
+        mc:Ignorable="d"
+        Title="ConnectionDataBase" WindowStartupLocation="CenterScreen"
+        Height="300" Width="250"
+        Background="Transparent" WindowStyle="None"
+        AllowsTransparency="True">
+    <Window.Resources>
+        <ControlTemplate TargetType="Button" x:Key="Close">
+            <Border Width="20" Height="22"
+                    CornerRadius="0, 8.9, 0, 0" Background="{TemplateBinding Background}"
+                    HorizontalAlignment="Right">
+                <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center"
+                                FontSize="14" Content="✕"
+                                Foreground="Red"/>
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <Border Grid.Row="0" Height="300" Width="250" CornerRadius="10">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientBrush.GradientStops>
+                        <GradientStopCollection>
+                            <GradientStop Color="#ff9b05" Offset="0.0"/>
+                            <GradientStop Color="#fc68d2" Offset="1"/>
+                        </GradientStopCollection>
+                    </GradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Соединение с базой данных"
+                           HorizontalAlignment="Center"/>
+                <Border Grid.Row="0" CornerRadius="8, 8, 0, 0"
+                        Background="Transparent" MouseLeftButtonDown="MoveWindow"/>
+                <Button x:Name="Close" Grid.Row="0" Click="Exit" 
+                        Template="{StaticResource Close}"
+                        Background="Transparent"
+                        MouseEnter="BMouseEnter" MouseLeave="BMouseLeave"/>
+                <Grid Grid.Row="1" Background="White">
+                    
+                </Grid>
+            </Grid>
+        </Border>
+        <Border x:Name="Mask" Background="Gray" CornerRadius="10" Opacity="0.7" Visibility="Hidden"/>
+    </Grid>
+</Window>

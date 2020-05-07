@@ -1,23 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace PictureDLL
 {
-    public interface IExecutableModule
+    public class Picture
     {
-        void Execute(string[] _params);
-
-        string About();
-
-    }
-
-    public class Picture : IExecutableModule
-    {
-        public void Execute(string[] _params) { }
-
-        public string About() { return ""; }
+        public BitmapImage PictureFile(string path) { return (new BitmapImage(new Uri(path))); }
     }
 }

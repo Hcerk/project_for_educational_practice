@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Windows.Controls;
 
 namespace LoggerDLL
 {
@@ -19,10 +20,7 @@ namespace LoggerDLL
 
         private static string currentPath = AppDomain.CurrentDomain.BaseDirectory;
 
-        public void WriteInLog(LogType logType, string message)
-        {
-            WriteMessageInLogNowDate(logType, message);
-        }
+        public void WriteInLog(LogType logType, string message) => WriteMessageInLogNowDate(logType, message);
 
         private void WriteMessageInLogNowDate(LogType logType, string message)
         {
