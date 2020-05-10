@@ -8,7 +8,7 @@
         Title="ConnectionDataBase" WindowStartupLocation="CenterScreen"
         Height="300" Width="250"
         Background="Transparent" WindowStyle="None"
-        AllowsTransparency="True">
+        AllowsTransparency="True" Loaded="LoadedControl" ResizeMode="NoResize">
     <Window.Resources>
         <ControlTemplate TargetType="Button" x:Key="Close">
             <Border Width="20" Height="22"
@@ -47,10 +47,21 @@
                         Background="Transparent"
                         MouseEnter="BMouseEnter" MouseLeave="BMouseLeave"/>
                 <Grid Grid.Row="1" Background="White">
-                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="0, 6, 0, 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton x:Name="mysql" Grid.Column="0" GroupName="Provider" Content="MySql" HorizontalAlignment="Center" IsChecked="True" Click="LoadedControl"/>
+                        <RadioButton Grid.Column="1" GroupName="Provider" Content="MS Server" HorizontalAlignment="Center" Click="LoadedControl"/>
+                    </Grid>
+                    <Grid x:Name="main" Grid.Row="1"/>
                 </Grid>
             </Grid>
         </Border>
-        <Border x:Name="Mask" Background="Gray" CornerRadius="10" Opacity="0.7" Visibility="Hidden"/>
     </Grid>
 </Window>

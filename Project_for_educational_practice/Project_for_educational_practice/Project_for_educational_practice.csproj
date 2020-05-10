@@ -141,10 +141,19 @@
     <Compile Include="Forms\ConnectionDataBase.xaml.cs">
       <DependentUpon>ConnectionDataBase.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Database\msServer.xaml.cs">
+      <DependentUpon>msServer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Database\mysql.xaml.cs">
+      <DependentUpon>mysql.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Logs.xaml.cs">
       <DependentUpon>Logs.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scripts\Data.cs" />
+    <Compile Include="UserControls\database.xaml.cs">
+      <DependentUpon>database.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MusicControl.xaml.cs">
       <DependentUpon>MusicControl.xaml</DependentUpon>
     </Compile>
@@ -155,6 +164,14 @@
       <DependentUpon>TextControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Forms\ConnectionDataBase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Database\msServer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Database\mysql.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -188,6 +205,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\database.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\MusicControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

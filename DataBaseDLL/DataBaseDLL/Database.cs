@@ -12,6 +12,8 @@ namespace DataBaseDLL
         List<string[]> Select(string command);
 
         int IDUquery(string command);
+
+        string[] GetName(string command);
         
     }
 
@@ -68,6 +70,18 @@ namespace DataBaseDLL
             return rows;
         }
 
+        public string[] GetName(string command)
+        {
+            conn.Open();
+            SqlDataReader dr = new SqlCommand(command, conn).ExecuteReader();
+            string[] array = new string[dr.FieldCount];
+            for (int i = 0; i < dr.FieldCount; i++)
+                array[i] = dr.GetName(i);
+            dr.Close();
+            conn.Close();
+            return array;
+        }
+
     }
 
     public class MySQL : DatabaseDL
@@ -121,6 +135,22 @@ namespace DataBaseDLL
             dr.Close();
             conn.Close();
             return rows;
+        }
+
+        public string[] GetName(string command)
+        {
+            string[] array = { };
+            conn.Open();
+            MySqlDataReader dr = new MySqlCommand(command, conn).ExecuteReader();
+            if (dr.HasRows)
+            {
+                array = new string[dr.FieldCount];
+                for (int i = 0; i < dr.FieldCount; i++)
+                    array[i] = dr.GetName(i);
+            }
+            dr.Close();
+            conn.Close();
+            return array;
         }
     }
 }

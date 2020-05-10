@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using DataBaseDLL;
 
 namespace Project_for_educational_practice.Scripts
 {
@@ -10,9 +7,7 @@ namespace Project_for_educational_practice.Scripts
     {
         public static string PathFile;
 
-        public static string source;
-        public static string catalog;
-        public static string name;
-        public static string password;
+        public static MySQL connectMySQL = null;
+        public static MSServer conncetMS = null;
     }
 }

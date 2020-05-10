@@ -80,8 +80,7 @@
                         </MenuItem>
                         <MenuItem Header="О программе" Click="Info"/>
                     </Menu>
-                    <Grid x:Name="Panel" Grid.Row="1">
-                    </Grid>
+                    <Grid x:Name="Panel" Grid.Row="1" x:FieldModifier="public"/>
                     <Grid Grid.Row="2" Background="#fff8d4">
                         <Button Content="Очистить"
                                 HorizontalAlignment="Right"
@@ -93,6 +92,6 @@
                 <TextBlock Grid.Row="2" Text="" FontSize="14"/>
             </Grid>
         </Border>
-        <Border x:Name="Mask" Background="Gray" CornerRadius="10" Opacity="0.7" Visibility="Hidden"/>
+        <Border x:Name="Mask" x:FieldModifier="public" Background="Gray" CornerRadius="10" Opacity="0.7" Visibility="Hidden"/>
     </Grid>
 </Window>

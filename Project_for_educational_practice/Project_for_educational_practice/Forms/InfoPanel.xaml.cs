@@ -20,7 +20,11 @@ namespace Project_for_educational_practice.Forms
 
         private void hClick(object sender, RoutedEventArgs e) => Process.Start("https://github.com/Hcerk/project_for_educational_practice/");
 
-        private void CloseBtt(object sender, RoutedEventArgs e) => this.Close();
+        private void CloseBtt(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ((MainWindow)Application.Current.MainWindow).Mask.Visibility = Visibility.Hidden;
+        }
 
         private void MoveWindow(object sender, MouseButtonEventArgs e) => this.DragMove(); 
 

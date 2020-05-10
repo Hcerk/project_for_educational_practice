@@ -52,7 +52,11 @@ namespace Project_for_educational_practice
             dialog.ShowDialog();
         }
 
-        public void ConnectionDataBase(object sender, RoutedEventArgs e) => new Forms.ConnectionDataBase().ShowDialog();
+        public void ConnectionDataBase(object sender, RoutedEventArgs e)
+        {
+            Mask.Visibility = Visibility.Visible;
+            new Forms.ConnectionDataBase().ShowDialog();
+        }
 
         public void OpenSettings(object sender, RoutedEventArgs e) => new Forms.Settings().ShowDialog(); 
         
@@ -62,7 +66,11 @@ namespace Project_for_educational_practice
             new Logger().WriteInLog(LogType.Info, "Очистка панели");
         }
 
-        public void Info(object sender, RoutedEventArgs e) => new Forms.InfoPanel().Show();
+        public void Info(object sender, RoutedEventArgs e)
+        {
+            Mask.Visibility = Visibility.Visible;
+            new Forms.InfoPanel().Show();
+        }
 
         public void OpenLogs(object sender, RoutedEventArgs e) => new Forms.Logs().Show();
 
