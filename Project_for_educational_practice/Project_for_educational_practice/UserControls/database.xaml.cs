@@ -24,9 +24,6 @@ namespace Project_for_educational_practice.UserControls
 
         private void Run(object sender, RoutedEventArgs e)
         {
-            //Data.connect.ToString().Contains("MySQL")
-            
-
             if (query.Text.Length == 0)
                 MessageBox.Show("Нулевой запрос");
             else
@@ -94,7 +91,7 @@ namespace Project_for_educational_practice.UserControls
                         }
                     }
                 }
-                catch (Exception er) { new Logger().WriteInLog(LogType.Error, er.Message); }
+                catch (Exception er) { new Logger().WriteInLog(LogType.Error, er.Message); MessageBox.Show("Ошибка записана в логи", "Ошибка в запросе", MessageBoxButton.OK, MessageBoxImage.Error); }
             }    
         }
 

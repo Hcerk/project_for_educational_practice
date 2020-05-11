@@ -41,10 +41,14 @@ namespace DataBaseDLL
         /// <returns></returns>
         public int IDUquery(string command)
         {
-            conn.Open();
-            int count = new SqlCommand(command, conn).ExecuteNonQuery();
-            conn.Close();
-            return count;
+            try
+            {
+                conn.Open();
+                int count = new SqlCommand(command, conn).ExecuteNonQuery();
+                conn.Close();
+                return count;
+            }
+            finally { if ( conn.State == System.Data.ConnectionState.Open ) conn.Close(); }
         }
 
         /// <summary>
@@ -54,32 +58,40 @@ namespace DataBaseDLL
         /// <returns> Список со вложенным массивом строк </returns>
         public List<string[]> Select(string command)
         {
-            List<string[]> rows = new List<string[]>();
-            conn.Open();
-            SqlDataReader dr = new SqlCommand(command, conn).ExecuteReader();
-            if (dr.HasRows)
-                while(dr.Read())
-                {
-                    string[] columns = new string[dr.FieldCount];
-                    for (int i = 0; i < dr.FieldCount; i++)
-                        columns[i] = dr[i].ToString();
-                    rows.Add(columns);
-                }
-            dr.Close();
-            conn.Close();
-            return rows;
+            try
+            {
+                List<string[]> rows = new List<string[]>();
+                conn.Open();
+                SqlDataReader dr = new SqlCommand(command, conn).ExecuteReader();
+                if (dr.HasRows)
+                    while (dr.Read())
+                    {
+                        string[] columns = new string[dr.FieldCount];
+                        for (int i = 0; i < dr.FieldCount; i++)
+                            columns[i] = dr[i].ToString();
+                        rows.Add(columns);
+                    }
+                dr.Close();
+                conn.Close();
+                return rows;
+            }
+            finally { if ( conn.State == System.Data.ConnectionState.Open ) conn.Close(); }
         }
 
         public string[] GetName(string command)
         {
-            conn.Open();
-            SqlDataReader dr = new SqlCommand(command, conn).ExecuteReader();
-            string[] array = new string[dr.FieldCount];
-            for (int i = 0; i < dr.FieldCount; i++)
-                array[i] = dr.GetName(i);
-            dr.Close();
-            conn.Close();
-            return array;
+            try
+            {
+                conn.Open();
+                SqlDataReader dr = new SqlCommand(command, conn).ExecuteReader();
+                string[] array = new string[dr.FieldCount];
+                for (int i = 0; i < dr.FieldCount; i++)
+                    array[i] = dr.GetName(i);
+                dr.Close();
+                conn.Close();
+                return array;
+            }
+            finally { if ( conn.State == System.Data.ConnectionState.Open ) conn.Close(); }
         }
 
     }
@@ -108,10 +120,14 @@ namespace DataBaseDLL
         /// <returns></returns>
         public int IDUquery(string command)
         {
-            conn.Open();
-            int count = new MySqlCommand(command, conn).ExecuteNonQuery();
-            conn.Close();
-            return count;
+            try
+            {
+                conn.Open();
+                int count = new MySqlCommand(command, conn).ExecuteNonQuery();
+                conn.Close();
+                return count;
+            }
+            finally { if ( conn.State == System.Data.ConnectionState.Open ) conn.Close(); }
         }
 
         /// <summary>
@@ -121,36 +137,44 @@ namespace DataBaseDLL
         /// <returns> Список со вложенным массивом строк </returns>
         public List<string[]> Select(string command)
         {
-            List<string[]> rows = new List<string[]>();
-            conn.Open();
-            MySqlDataReader dr = new MySqlCommand(command, conn).ExecuteReader();
-            if (dr.HasRows)
-                while (dr.Read())
-                {
-                    string[] columns = new string[dr.FieldCount];
-                    for (int i = 0; i < dr.FieldCount; i++)
-                        columns[i] = dr[i].ToString();
-                    rows.Add(columns);
-                }
-            dr.Close();
-            conn.Close();
-            return rows;
+            try 
+            {
+                List<string[]> rows = new List<string[]>();
+                conn.Open();
+                MySqlDataReader dr = new MySqlCommand(command, conn).ExecuteReader();
+                if (dr.HasRows)
+                    while (dr.Read())
+                    {
+                        string[] columns = new string[dr.FieldCount];
+                        for (int i = 0; i < dr.FieldCount; i++)
+                            columns[i] = dr[i].ToString();
+                        rows.Add(columns);
+                    }
+                dr.Close();
+                conn.Close();
+                return rows;
+            }
+            finally { if ( conn.State == System.Data.ConnectionState.Open ) conn.Close(); }
         }
 
         public string[] GetName(string command)
         {
-            string[] array = { };
-            conn.Open();
-            MySqlDataReader dr = new MySqlCommand(command, conn).ExecuteReader();
-            if (dr.HasRows)
+            try
             {
-                array = new string[dr.FieldCount];
-                for (int i = 0; i < dr.FieldCount; i++)
-                    array[i] = dr.GetName(i);
+                string[] array = { };
+                conn.Open();
+                MySqlDataReader dr = new MySqlCommand(command, conn).ExecuteReader();
+                if (dr.HasRows)
+                {
+                    array = new string[dr.FieldCount];
+                    for (int i = 0; i < dr.FieldCount; i++)
+                        array[i] = dr.GetName(i);
+                }
+                dr.Close();
+                conn.Close();
+                return array;
             }
-            dr.Close();
-            conn.Close();
-            return array;
+            finally { if ( conn.State == System.Data.ConnectionState.Open ) conn.Close(); }
         }
     }
 }
